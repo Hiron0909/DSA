@@ -1,7 +1,5 @@
-// Binary search works at only sorted element
-
 #include <iostream>
-#include <algorithm> // For sort()
+#include <algorithm> 
 using namespace std;
 
 int binarySearch(int arr[], int left, int right, int key) {
@@ -9,22 +7,30 @@ int binarySearch(int arr[], int left, int right, int key) {
         int mid = left + (right - left) / 2;
 
         if (arr[mid] == key)
-            return mid;  // Element found
-
+            return mid;
         else if (arr[mid] < key)
-            left = mid + 1;  // Search right half
-        else
-            right = mid - 1; // Search left half
+            left = mid + 1;  
+            right = mid - 1; 
     }
-    return -1;  // Element not found
+    return -1; 
 }
 
 int main() {
-    int arr[] = {2, 5, 6, 9, 3, 1, 8};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int key = 6;
+    int n;
+  cout << "Enter the size of the arary: ";
+  cin >> n;
+  int arr[n];
+  cout << "Enter elements in array : ";
 
-    sort(arr, arr + n); // Binary search requires sorted array
+  for(int i = 0; i<n; i++)
+  {
+    cin >> arr[i];
+  }
+   
+  int key;
+  cout << "Enter the key element which you want to find : ";
+  cin >> key;
+    sort(arr, arr + n);
 
     int result = binarySearch(arr, 0, n - 1, key);
 

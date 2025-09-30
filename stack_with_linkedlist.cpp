@@ -45,7 +45,8 @@ void display(node *s)
     s = s->next; // Skip dummy node
     while(s != NULL)
     {
-     cout << s->data << endl;
+     //cout << s->data << endl;
+     cout << "| "<< s -> data <<" |" <<endl;
      s = s->next;
     }
   }  

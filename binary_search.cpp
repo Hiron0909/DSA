@@ -1,43 +1,57 @@
-#include <iostream>
-#include <algorithm> 
+#include<bits/stdc++.h>
 using namespace std;
 
-int binarySearch(int arr[], int left, int right, int key) {
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
+int main()
+{
+int n;
+cout << "Enter size of the array : ";
+cin >> n;
 
-        if (arr[mid] == key)
-            return mid;
-        else if (arr[mid] < key)
-            left = mid + 1;  
-            right = mid - 1; 
-    }
-    return -1; 
+int arr[n] ;
+
+cout << "Enter Elements in the array : ";
+
+for(int i = 0; i< n; i++)
+cin >> arr[i];
+
+
+sort(arr, arr + n);
+
+cout << "Sorted Array : ";
+for(int i = 0 ; i< n; i++)
+cout << arr[i] << " ";
+cout << endl;
+
+int key ;
+
+cout << "Emter Key element : ";
+cin >> key;
+
+int left = 0;
+int right = n - 1;
+int med = (left + right) / 2;
+
+while(left <= right)
+{
+  if(arr[med] == key)
+  {
+    cout << "value found in index no " << med + 1;
+    return 0;
+  }
+  else if(key > arr[med])
+  {
+    left = med + 1;
+    med = (left + right) / 2;
+  }
+  else
+  {
+    right = med - 1;
+    med = (left + right) / 2;
+  }
 }
 
-int main() {
-    int n;
-  cout << "Enter the size of the arary: ";
-  cin >> n;
-  int arr[n];
-  cout << "Enter elements in array : ";
+cout << "Element not found\n";
 
-  for(int i = 0; i<n; i++)
-  {
-    cin >> arr[i];
-  }
-   
-  int key;
-  cout << "Enter the key element which you want to find : ";
-  cin >> key;
-    sort(arr, arr + n);
 
-    int result = binarySearch(arr, 0, n - 1, key);
-
-    if (result != -1)
-        cout << "Element found at index: " << result << endl;
-    else
-        cout << "Element not found" << endl;
-
-    return 0;
+return 0;    
 }
